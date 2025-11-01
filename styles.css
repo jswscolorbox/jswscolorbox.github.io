@@ -1,0 +1,147 @@
+/* Minimal, spacious, Kenya Hara-inspired styling */
+:root {
+  --bg: #f9f9f8;
+  --text: #111111;
+  --muted: #6b7280;
+  --line: #e6e4e1;
+  --accent: #1f2937;
+  --space-xl: clamp(48px, 8vw, 120px);
+  --space-lg: clamp(28px, 6vw, 72px);
+  --space-md: clamp(16px, 3.5vw, 32px);
+  --space-sm: 12px;
+  --maxw: 1080px;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, "Noto Sans CJK", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Hiragino Kaku Gothic ProN", "Yu Gothic", "PingFang SC", "Noto Sans", sans-serif;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: var(--space-md) var(--space-sm);
+}
+
+.brand {
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.nav a {
+  color: var(--text);
+  text-decoration: none;
+  margin-left: 20px;
+  position: relative;
+}
+.nav a[aria-current="page"]::after,
+.nav a:hover::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -6px;
+  width: 100%; height: 1px;
+  background: var(--line);
+}
+
+/* Prominent yet restrained download button */
+.nav .download-btn {
+  margin-left: 24px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+.nav .download-btn:hover { filter: brightness(0.95); }
+.nav .download-btn:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+.hero {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-sm) var(--space-lg);
+}
+
+.hero-compact { padding-top: var(--space-lg); }
+
+.title {
+  margin: 0 0 var(--space-sm) 0;
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--muted);
+  letter-spacing: 0.03em;
+}
+
+.about {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--space-sm) var(--space-lg);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--space-lg);
+  border-top: 1px solid var(--line);
+  padding-top: var(--space-lg);
+}
+
+.about h2 { margin: 0 0 var(--space-sm) 0; font-weight: 500; }
+.about p { margin: 0 0 var(--space-md) 0; line-height: 1.9; }
+
+.features {
+  margin: 0; padding: 0; list-style: none;
+  display: grid; gap: 12px;
+}
+.features li { line-height: 1.8; }
+
+.gallery {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--space-sm) var(--space-xl);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.gallery figure { margin: 0; background: #fff; border: 1px solid var(--line); }
+.gallery img { width: 100%; display: block; }
+
+.privacy { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--space-sm) var(--space-xl); }
+.privacy-content { border-top: 1px solid var(--line); padding-top: var(--space-lg); }
+.divider { border: none; border-top: 1px solid var(--line); margin: var(--space-lg) 0; }
+
+.site-footer {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-sm);
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .gallery-grid { grid-template-columns: 1fr; }
+}
